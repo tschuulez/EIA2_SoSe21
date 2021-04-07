@@ -1,7 +1,55 @@
 body {
-    background-image: url();
+    background-image: url(assets/BoardBackground.jpeg);
+}
+
+.box {
+    position: absolute;
+    padding-left: 19Opx;
+    left: 20%;
+    top: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 800px;
+    height: 100px
 }
 
 a {
-    text-decoration: none;  
+    text-decoration: none; 
+    color: #ffff; 
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    font-weight: bolder;
+    font-size: 20px;
+    top: 35px;
+    left: 18px;
+}
+a:hover {
+    color: darkorchid;
+}
+
+.button1 {
+    background-color: darkgray;
+    height: 100px;
+    width: 600px;
+    position: relative;
+    border-radius: 5px;
+    margin: 8px;
+}
+.button2 {
+    background-color: darkgray;
+    height: 100px;
+    width: 600px;
+    position: relative;
+    border-radius: 5px;
+    margin: 8px;
+    
+}
+.button3 {
+    background-color: darkgray;
+    height: 100px;
+    width: 600px;
+    position: relative;
+    border-radius: 5px;
+    margin: 8px;
 }
