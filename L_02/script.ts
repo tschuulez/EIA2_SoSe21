@@ -1,7 +1,8 @@
 namespace L02_Load {
-    document.addEventListener("DOMContentLoaded", handleLoad);
+    
+    let x: number = 340;
+    x = x % 400;
+    console.log(x);
 
-    function handleLoad(_event: Event): void {
-        console.log(_event);
-    }
+    console.log(x);
 }
