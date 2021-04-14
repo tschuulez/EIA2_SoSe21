@@ -14,10 +14,10 @@ var EventsInspector;
         let x = _event.clientX;
         let y = _event.clientY;
         let body = _event.target;
-        let info = document.querySelector("span");
+        let info = document.querySelector("#span");
         info.style.top = "y" + "px";
         info.style.left = "x" + "px";
-        info.textContent = x + "x" + y + "y";
+        info.textContent = x + " x   " + " " + " " + y + " y " + _event.target;
         body.appendChild(info);
     }
     function logInfo(_event) {

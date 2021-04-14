@@ -18,12 +18,12 @@ function setInfoBox(_event: MouseEvent): void {
     let y: number = _event.clientY;
 
     let body: HTMLElement = <HTMLElement>_event.target;
-    let info: HTMLSpanElement = <HTMLElement>document.querySelector("span");
+    let info: HTMLSpanElement = <HTMLElement>document.querySelector("#span");
 
     info.style.top = "y" + "px";
     info.style.left = "x" + "px";
 
-    info.textContent = x + "x" + y + "y";
+    info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
 
     body.appendChild(info);
 
