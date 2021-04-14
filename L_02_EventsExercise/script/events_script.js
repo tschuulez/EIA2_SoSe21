@@ -13,12 +13,11 @@ var EventsInspector;
         //console.log(_event);
         let x = _event.clientX;
         let y = _event.clientY;
-        let body = _event.target;
-        let info = document.querySelector("#span");
+        let spanElement = document.querySelector("span");
+        let info = spanElement;
         info.style.top = "y" + "px";
         info.style.left = "x" + "px";
         info.textContent = x + " x   " + " " + " " + y + " y " + _event.target;
-        body.appendChild(info);
     }
     function logInfo(_event) {
         console.log(_event.type);
