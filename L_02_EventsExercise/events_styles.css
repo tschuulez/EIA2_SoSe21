@@ -9,10 +9,9 @@ h1{
 
 span {
     position: fixed;
-    left: 30%;
-    top: 70%;
-    offset-position: right;
-    cursor: pointer;
+    
+   z-index: 100;
+    
     background-color: khaki;
     width: 320px;
     height: 200px;

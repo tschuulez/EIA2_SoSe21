@@ -14,16 +14,16 @@ function handleLoad(): void {
 function setInfoBox(_event: MouseEvent): void {
     //console.log(_event);
 
-    let x: number = _event.clientX;
-    let y: number = _event.clientY;
+    let x: number = _event.pageX;
+    let y: number = _event.pageY;
 
     let spanElement: HTMLSpanElement =  <HTMLElement>document.querySelector("span");
     let info: HTMLElement = spanElement;
 
-    info.style.top = "y" + "px";
-    info.style.left = "x" + "px";
+    info.style.top = y + "px";
+    info.style.left = x + "px";
 
-    info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
+    //info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
 
    
 
