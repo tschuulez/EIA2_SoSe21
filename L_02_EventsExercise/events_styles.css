@@ -5,6 +5,7 @@ h1{
     color: grey;
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
+    text-align: center;
 }
 
 span {
@@ -17,21 +18,26 @@ span {
     height: 200px;
 }
 
+.flexbox {
+    flex-direction: row;
+    display: flex;
+}
+
 .div0 {
-    position: absolute;
+    position: relative;
     left: 10%;
     flex-direction: row;
     width: 500px;
     height: 600px;
     background-color: darkgray;
-    margin: 10px;
+    margin: 20px;
 }
 .div1{
-    position: absolute;
-    left: 55%;
+    position: relative;
+    left: 20%;
     flex-direction: row;
     width: 500px;
     height: 600px;
     background-color: darkgray;
-    margin: 10px;
+    margin: 20px;
 }
