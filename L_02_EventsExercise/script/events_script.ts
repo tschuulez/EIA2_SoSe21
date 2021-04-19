@@ -1,3 +1,4 @@
+
 namespace EventsInspector {
 window.addEventListener("load", handleLoad);
 
@@ -23,7 +24,7 @@ function setInfoBox(_event: MouseEvent): void {
     info.style.top = y + "px";
     info.style.left = x + "px";
 
-    //info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
+    info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
 
    
 

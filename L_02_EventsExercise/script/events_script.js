@@ -17,7 +17,7 @@ var EventsInspector;
         let info = spanElement;
         info.style.top = y + "px";
         info.style.left = x + "px";
-        //info.textContent = x + " x   " + " " + " "  + y + " y " + _event.target;
+        info.textContent = x + " x   " + " " + " " + y + " y " + _event.target;
     }
     function logInfo(_event) {
         console.log(_event.type);
