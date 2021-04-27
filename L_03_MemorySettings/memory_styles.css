@@ -1,0 +1,55 @@
+body {
+	display: grid;
+	grid-template-columns: 70% auto;
+	grid-template-rows: auto auto
+}
+
+header {
+	grid-column: span 2;
+	text-align: center;
+}
+
+div {
+	border: thin solid black;
+	margin: 1em;
+}
+h2 {
+	text-align: center;
+}
+
+progress {
+	height:4em;
+	width: 4em;
+	transform: rotate(-90deg);
+}
+
+#slider {
+	display: grid;
+	grid-template-columns: auto auto; 
+    
+}
+footer{
+    position: absolute;
+    width: 400px;
+    height: 40px;
+    left: 37%;
+    bottom: 1%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    
+    font: 20px ;
+    
+}
+
+.option1 {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.option2 { 
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.option3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
