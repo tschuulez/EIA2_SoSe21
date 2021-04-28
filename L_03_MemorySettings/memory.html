@@ -24,44 +24,47 @@
             <div id="form">
                 <h2>Choose here</h2>
                 <fieldset>
-                    <input type="number" name="Stepper" step="1" min="5" max="25" value="0" />
+                    <legend>number of pairs</legend>
+                    <input type="number" name="stepper" step="1" min="5" max="25" value="0" id="stepper" />
                     <hr />
                 </fieldset>
                 <fieldset>
                     <legend>Size of cards</legend>
                     <span id="slider">
-                        <span>
-                            0.1 L
-                            <input type="range" name="Amount" id="amount" min="0.1" max="1.0" step="0.1" value="0.1">
-                            1.0 L
-                        </span>
+
+
+                        <input type="range" name="slider" id="slider" min="0.1" max="1.0" step="0.1" value="0.1">
+
+
                         <progress max="1.0" value="0.1" />
                     </span>
                 </fieldset>
                 <fieldset>
                     <legend>boardgame-color</legend>
-                    <input type="color" name="Color" placeholder="red" id="color" value="#ff0000">
+                    <input type="color" name="boardgame-color" placeholder="red" id="boardgame-color" value="#ff0000">
                     <hr />
                 </fieldset>
                 <fieldset>
                     <legend>color of cards</legend>
-                    <input type="color" name="Color" placeholder="red" id="color" value="#ff0000">
+                    <input type="color" name="color-of-cards" placeholder="red" id="color-of-cards" value="#ff0000">
                     <hr />
                 </fieldset>
                 <fieldset>
                     <legend>font-color</legend>
-                    <input type="color" name="Color" placeholder="red" id="color" value="#ff0000">
+                    <input type="color" name="font-color" placeholder="red" id="font-color" value="#ff0000">
                     <hr />
                 </fieldset>
                 <fieldset>
                     <legend>fonts</legend>
                     <select name="fonts" id="fonts">
-                        <option class="option1" value="'Courier New', Courier, monospace" >Courier New</option>
-                        <option class="option2" value="'Times New Roman', Times, serif" >Times New Roman</option>
-                        <option class="option3" value="Verdana, Geneva, Tahoma, sans-serif" >Verdana</option>
+                        <option class="option1" value="'Courier New', Courier, monospace">Courier New</option>
+                        <option class="option2" value="'Times New Roman', Times, serif">Times New Roman</option>
+                        <option class="option3" value="Verdana, Geneva, Tahoma, sans-serif">Verdana</option>
                     </select>
                 </fieldset>
             </div>
+
+            <div class="startbutton">start the Game</div>
         </form>
 
 

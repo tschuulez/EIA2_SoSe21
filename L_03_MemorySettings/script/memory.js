@@ -2,32 +2,29 @@
 var L_03_MemorySettings;
 (function (L_03_MemorySettings) {
     window.addEventListener("load", handleLoad);
+    let stepper = document.getElementById("stepper");
+    let slider = document.getElementById("slider");
+    let boardgameColor = document.getElementById("boardgame-color");
+    let cardsColor = document.getElementById("color-of-cards");
+    let fontColor = document.getElementById("font-color");
     function handleLoad(_event) {
         console.log("Start");
-        let form = document.querySelector("div#form");
-        let slider = document.querySelector("input#amount");
-        form.addEventListener("change", handleChange);
-        slider.addEventListener("input", displayAmount);
+        stepper.addEventListener("change", handleChange);
+        slider.addEventListener("change", handleChange);
+        boardgameColor.addEventListener("change", handleChange);
+        cardsColor.addEventListener("change", handleChange);
+        fontColor.addEventListener("change", handleChange);
     }
     function handleChange(_event) {
-        // console.log(_event);
-        // let drink: HTMLSelectElement = <HTMLSelectElement>document.querySelector("select");
-        // console.log(drink.value);
-        // let inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll("input");
-        // console.log(inputs);
-        let order = document.querySelector("div#order");
-        order.innerHTML = "";
-        let formData = new FormData(document.forms[0]);
-        for (let entry of formData) {
-            let item = document.querySelector("[value='" + entry[1] + "']");
-            let price = Number(item.getAttribute("price"));
-            order.innerHTML += item.name + "  € " + price;
+        let data = new FormData(document.forms[0]);
+        for (let entry of data) {
+            console.log(entry);
+            console.log(data.get("stepper"));
+            console.log(data.get("slider"));
+            console.log(data.get("boardgame-color"));
+            console.log(data.get("color-of-cards"));
+            console.log(data.get("font-color"));
         }
-    }
-    function displayAmount(_event) {
-        let progress = document.querySelector("progress");
-        let amount = _event.target.value;
-        progress.value = parseFloat(amount);
     }
 })(L_03_MemorySettings || (L_03_MemorySettings = {}));
 //# sourceMappingURL=memory.js.map

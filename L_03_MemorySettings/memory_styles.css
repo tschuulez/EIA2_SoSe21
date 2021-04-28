@@ -46,3 +46,21 @@ footer{
 
 }  
 
+.startbutton {
+	height: 50px;
+	width: 170px;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+	font-family: 'Courier New', Courier, monospace;
+	border-radius: 10px;
+	text-align: center;
+	padding-top: 15px;
+	position: absolute;
+	right: 90px;	
+}
+
+.startbutton:hover {
+
+background-color: purple;
+}
