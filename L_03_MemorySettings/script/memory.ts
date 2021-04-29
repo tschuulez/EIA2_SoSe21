@@ -159,37 +159,44 @@ namespace L_03_MemorySettings {
 
         //const start: new ; 
         //const time1: start.getMinutes();
+        let memoryboard: HTMLDivElement = document.createElement("div")!;
+        memoryboard.id = "memoryboard";
+        document.querySelector("body")!.appendChild(memoryboard);
+        
 
         let data: FormData = new FormData(document.forms[0]);
+        let pairs: number = 0;
+        let sizeOfCards: string;
+        let boardgameColorValue: string;
+        let colorOfCardsValue: string; 
+        let fontColorValue: string; 
+        let fontValue: string;
 
         for (let entry of data) {
             console.log(entry);
             console.log(data.get("stepper"));
-            const pairs: FormDataEntryValue = data.get("stepper")!;
+            pairs =  <number><unknown>data.get("stepper")!;
 
             console.log(data.get("slider"));
-            const sizeOfCards: FormDataEntryValue = data.get("slider")!;
+            sizeOfCards = <string><unknown>data.get("slider")!;
 
             console.log(data.get("boardgame-color"));
-            const boardgameColorValue: FormDataEntryValue = data.get("boardgame-color")!;
-            boardgameColorValue.toString();
+            boardgameColorValue = <string><unknown>data.get("boardgame-color")!;
+           // boardgameColorValue.toString();
 
             console.log(data.get("color-of-cards"));
-            const colorOfCardsValue: FormDataEntryValue = data.get("color-of-cards")!;
-            colorOfCardsValue.toString();
+            colorOfCardsValue = <string><unknown>data.get("color-of-cards")!;
+           // colorOfCardsValue.toString();
 
             console.log(data.get("font-color"));
-            const fontColorValue: FormDataEntryValue = data.get("font-color")!;
-            fontColorValue.toString();
+            fontColorValue = <string><unknown>data.get("font-color")!;
+            //fontColorValue.toString();
 
             console.log(data.get("fonts"));
-            const fontValue: FormDataEntryValue = data.get("fonts")!;
-            fontValue.toString();
+            fontValue = <string><unknown>data.get("fonts")!;
+            //fontValue.toString();
         }
         
-
-        
-
         for (let i: number = 0; i < pairs; i++) {
             cardsTemp.push(cards[i]);
         }
@@ -218,9 +225,14 @@ namespace L_03_MemorySettings {
 
     function createCard(card: Card, _sizeValue: string, _colorOfBoardgame: string, _colorOfCards: string, _colorOfFont: string, _fontValue: string): void {
 
-        document.querySelector("body")!.style.backgroundColor = _colorOfBoardgame;
+        let board: HTMLElement = document.getElementById("memoryboard")!;
+        board.style.backgroundColor = _colorOfBoardgame;
+
+        
+        
 
         let aCard: HTMLDivElement = document.createElement("div");
+        aCard.className = "cardDiv";
         aCard.style.height = _sizeValue;
         aCard.style.width = _sizeValue;
 
@@ -232,7 +244,8 @@ namespace L_03_MemorySettings {
         let backOfCard: HTMLDivElement = document.createElement("div");
         backOfCard.style.backgroundColor = _colorOfCards;
 
-        document.querySelector("body")!.appendChild(aCard);
+        
+        board.appendChild(aCard);
         aCard.appendChild(textOfCard);
         aCard.appendChild(backOfCard);
 

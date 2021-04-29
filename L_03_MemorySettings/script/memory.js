@@ -141,25 +141,34 @@ var L_03_MemorySettings;
         form.style.visibility = "hidden";
         //const start: new ; 
         //const time1: start.getMinutes();
+        let memoryboard = document.createElement("div");
+        memoryboard.id = "memoryboard";
+        document.querySelector("body").appendChild(memoryboard);
         let data = new FormData(document.forms[0]);
+        let pairs = 0;
+        let sizeOfCards;
+        let boardgameColorValue;
+        let colorOfCardsValue;
+        let fontColorValue;
+        let fontValue;
         for (let entry of data) {
             console.log(entry);
             console.log(data.get("stepper"));
-            const pairs = data.get("stepper");
+            pairs = data.get("stepper");
             console.log(data.get("slider"));
-            const sizeOfCards = data.get("slider");
+            sizeOfCards = data.get("slider");
             console.log(data.get("boardgame-color"));
-            const boardgameColorValue = data.get("boardgame-color");
-            boardgameColorValue.toString();
+            boardgameColorValue = data.get("boardgame-color");
+            // boardgameColorValue.toString();
             console.log(data.get("color-of-cards"));
-            const colorOfCardsValue = data.get("color-of-cards");
-            colorOfCardsValue.toString();
+            colorOfCardsValue = data.get("color-of-cards");
+            // colorOfCardsValue.toString();
             console.log(data.get("font-color"));
-            const fontColorValue = data.get("font-color");
-            fontColorValue.toString();
+            fontColorValue = data.get("font-color");
+            //fontColorValue.toString();
             console.log(data.get("fonts"));
-            const fontValue = data.get("fonts");
-            fontValue.toString();
+            fontValue = data.get("fonts");
+            //fontValue.toString();
         }
         for (let i = 0; i < pairs; i++) {
             cardsTemp.push(cards[i]);
@@ -181,8 +190,10 @@ var L_03_MemorySettings;
         }
     }
     function createCard(card, _sizeValue, _colorOfBoardgame, _colorOfCards, _colorOfFont, _fontValue) {
-        document.querySelector("body").style.backgroundColor = _colorOfBoardgame;
+        let board = document.getElementById("memoryboard");
+        board.style.backgroundColor = _colorOfBoardgame;
         let aCard = document.createElement("div");
+        aCard.className = "cardDiv";
         aCard.style.height = _sizeValue;
         aCard.style.width = _sizeValue;
         let textOfCard = document.createElement("label");
@@ -191,7 +202,7 @@ var L_03_MemorySettings;
         textOfCard.style.fontFamily = _fontValue;
         let backOfCard = document.createElement("div");
         backOfCard.style.backgroundColor = _colorOfCards;
-        document.querySelector("body").appendChild(aCard);
+        board.appendChild(aCard);
         aCard.appendChild(textOfCard);
         aCard.appendChild(backOfCard);
         aCard.addEventListener("click", flipCard);

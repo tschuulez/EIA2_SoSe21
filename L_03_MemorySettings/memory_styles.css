@@ -5,6 +5,7 @@ body {
 }
 
 header {
+	position: relative;
 	grid-column: span 2;
 	text-align: center;
 }
@@ -14,6 +15,7 @@ div {
 	margin: 1em;
 }
 h2 {
+	position: relative;
 	text-align: center;
 }
 
@@ -62,5 +64,16 @@ footer{
 
 #startbutton:hover {
 
-background-color: purple;
+    background-color: purple;
+}
+
+.cardDiv {
+	position: relative;
+	border-radius: 6px;
+	z-index: 5;
+	background-color: grey;
+}
+
+#memoryboard { 
+	position: absolute;
 }
