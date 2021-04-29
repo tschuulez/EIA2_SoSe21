@@ -8,7 +8,7 @@ namespace L_03_MemorySettings {
     let fontColor: HTMLElement = document.getElementById("font-color")!;
     let fonts: HTMLElement = document.getElementById("fonts")!;
 
-    let startbutton: HTMLDivElement = document.querySelector("startbutton")!;
+    let startbutton: HTMLElement = document.getElementById("startbutton")!;
 
     function handleLoad(_event: Event): void {
         console.log("Start");
@@ -20,7 +20,7 @@ namespace L_03_MemorySettings {
         fontColor.addEventListener("change", handleChange);
         fonts.addEventListener("change", handleChange);
 
-        startbutton.addEventListener("click", createGame)!;
+        startbutton.addEventListener("click", createGame);
     }
 
     function handleChange(_event: Event): void {
@@ -151,7 +151,7 @@ namespace L_03_MemorySettings {
     let cardsOnField: Card[] = [];
     let flipped: Card[] = [];
 
-    function createGame(_event: MouseEvent): void {
+    function createGame(): void {
 
         let form: HTMLElement = document.querySelector("form")!;
 
@@ -186,6 +186,9 @@ namespace L_03_MemorySettings {
             const fontValue: FormDataEntryValue = data.get("fonts")!;
             fontValue.toString();
         }
+        
+
+        
 
         for (let i: number = 0; i < pairs; i++) {
             cardsTemp.push(cards[i]);
@@ -267,14 +270,14 @@ namespace L_03_MemorySettings {
 
                 cardsOnField.splice(_firstCard, 1);
                 cardsOnField.splice(_secondCard, 1);
-            }, 2000);
+            },         2000);
         }
         else {
 
             setTimeout(function (): void {
                 _firstCard.style.back.visibility = "visible";
                 _secondCard.style.back.visibility = "visible";
-            }, 2000);
+            },         2000);
 
         }
 

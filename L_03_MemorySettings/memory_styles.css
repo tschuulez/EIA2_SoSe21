@@ -46,7 +46,7 @@ footer{
 
 }  
 
-.startbutton {
+#startbutton {
 	height: 50px;
 	width: 170px;
 	background-color: black;
@@ -60,7 +60,7 @@ footer{
 	right: 90px;	
 }
 
-.startbutton:hover {
+#startbutton:hover {
 
 background-color: purple;
 }

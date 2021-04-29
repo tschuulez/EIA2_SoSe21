@@ -8,7 +8,7 @@ var L_03_MemorySettings;
     let cardsColor = document.getElementById("color-of-cards");
     let fontColor = document.getElementById("font-color");
     let fonts = document.getElementById("fonts");
-    let startbutton = document.querySelector("startbutton");
+    let startbutton = document.getElementById("startbutton");
     function handleLoad(_event) {
         console.log("Start");
         stepper.addEventListener("change", handleChange);
@@ -136,7 +136,7 @@ var L_03_MemorySettings;
     let cardsTemp = [];
     let cardsOnField = [];
     let flipped = [];
-    function createGame(_event) {
+    function createGame() {
         let form = document.querySelector("form");
         form.style.visibility = "hidden";
         //const start: new ; 
