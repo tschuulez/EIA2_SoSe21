@@ -19,6 +19,9 @@ h2 {
 	text-align: center;
 }
 
+
+
+
 progress {
 	height:4em;
 	width: 4em;
@@ -67,13 +70,20 @@ footer{
     background-color: purple;
 }
 
-.cardDiv {
-	position: relative;
-	border-radius: 6px;
-	z-index: 5;
-	background-color: grey;
+
+
+
+
+
+#memoryboard{
+	position: absolute;
+	z-index: 2;
+	flex-direction: row;
+	display: flex;
+	flex-wrap: wrap;
+	height: 500px;
+	width: 1000px;
+	left: 17%;
+	top: 15%;
 }
 
-#memoryboard { 
-	position: absolute;
-}

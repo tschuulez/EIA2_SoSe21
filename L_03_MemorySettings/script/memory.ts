@@ -166,7 +166,7 @@ namespace L_03_MemorySettings {
 
         let data: FormData = new FormData(document.forms[0]);
         let pairs: number = 0;
-        let sizeOfCards: string;
+        let sizeOfCards: number;
         let boardgameColorValue: string;
         let colorOfCardsValue: string; 
         let fontColorValue: string; 
@@ -178,7 +178,7 @@ namespace L_03_MemorySettings {
             pairs =  <number><unknown>data.get("stepper")!;
 
             console.log(data.get("slider"));
-            sizeOfCards = <string><unknown>data.get("slider")!;
+            sizeOfCards = <number><unknown>data.get("slider")!;
 
             console.log(data.get("boardgame-color"));
             boardgameColorValue = <string><unknown>data.get("boardgame-color")!;
@@ -197,7 +197,7 @@ namespace L_03_MemorySettings {
             //fontValue.toString();
         }
         
-        for (let i: number = 0; i < pairs; i++) {
+        for (let i: number = 0; i < pairs * 2; i++) {
             cardsTemp.push(cards[i]);
         }
 
@@ -232,9 +232,11 @@ namespace L_03_MemorySettings {
         
 
         let aCard: HTMLDivElement = document.createElement("div");
-        aCard.className = "cardDiv";
+        aCard.style.backgroundColor = "#ffffff"; 
         aCard.style.height = _sizeValue;
         aCard.style.width = _sizeValue;
+         
+        
 
         let textOfCard: HTMLLabelElement = document.createElement("label");
         textOfCard.innerHTML = card.text;
@@ -243,6 +245,9 @@ namespace L_03_MemorySettings {
 
         let backOfCard: HTMLDivElement = document.createElement("div");
         backOfCard.style.backgroundColor = _colorOfCards;
+       
+        backOfCard.style.height = _sizeValue;
+        backOfCard.style.width = _sizeValue;
 
         
         board.appendChild(aCard);

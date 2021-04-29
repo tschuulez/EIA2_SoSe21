@@ -170,7 +170,7 @@ var L_03_MemorySettings;
             fontValue = data.get("fonts");
             //fontValue.toString();
         }
-        for (let i = 0; i < pairs; i++) {
+        for (let i = 0; i < pairs * 2; i++) {
             cardsTemp.push(cards[i]);
         }
         for (let n = 0; n < cardsTemp.length; n++) {
@@ -193,7 +193,7 @@ var L_03_MemorySettings;
         let board = document.getElementById("memoryboard");
         board.style.backgroundColor = _colorOfBoardgame;
         let aCard = document.createElement("div");
-        aCard.className = "cardDiv";
+        aCard.style.backgroundColor = "#ffffff";
         aCard.style.height = _sizeValue;
         aCard.style.width = _sizeValue;
         let textOfCard = document.createElement("label");
@@ -202,6 +202,8 @@ var L_03_MemorySettings;
         textOfCard.style.fontFamily = _fontValue;
         let backOfCard = document.createElement("div");
         backOfCard.style.backgroundColor = _colorOfCards;
+        backOfCard.style.height = _sizeValue;
+        backOfCard.style.width = _sizeValue;
         board.appendChild(aCard);
         aCard.appendChild(textOfCard);
         aCard.appendChild(backOfCard);
