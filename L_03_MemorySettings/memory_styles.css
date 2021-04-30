@@ -71,7 +71,13 @@ footer{
 }
 
 
-
+.backOfCard{
+	position: relative;
+   
+    top: -6%;
+    left: -5%;
+    float: left;
+}
 
 
 
@@ -85,5 +91,36 @@ footer{
 	width: 1000px;
 	left: 17%;
 	top: 15%;
+}
+
+.cardDiv {
+	text-align: center;
+	font-size: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	
+}
+
+.isHidden {
+	background-color: grey;
+}
+.isHidden p {
+	display: none;
+}
+
+
+
+
+
+
+
+#flexbox {
+	
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: center; 
+	text-align: center;
 }
 

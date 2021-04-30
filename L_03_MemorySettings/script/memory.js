@@ -2,244 +2,115 @@
 var L_03_MemorySettings;
 (function (L_03_MemorySettings) {
     window.addEventListener("load", handleLoad);
-    let stepper = document.getElementById("stepper");
-    let slider = document.getElementById("slider");
-    let boardgameColor = document.getElementById("boardgame-color");
-    let cardsColor = document.getElementById("color-of-cards");
-    let fontColor = document.getElementById("font-color");
-    let fonts = document.getElementById("fonts");
     let startbutton = document.getElementById("startbutton");
     function handleLoad(_event) {
         console.log("Start");
-        stepper.addEventListener("change", handleChange);
-        slider.addEventListener("change", handleChange);
-        boardgameColor.addEventListener("change", handleChange);
-        cardsColor.addEventListener("change", handleChange);
-        fontColor.addEventListener("change", handleChange);
-        fonts.addEventListener("change", handleChange);
         startbutton.addEventListener("click", createGame);
     }
-    function handleChange(_event) {
-        let data = new FormData(document.forms[0]);
-        for (let entry of data) {
-            console.log(entry);
-            console.log(data.get("stepper"));
-            console.log(data.get("slider"));
-            console.log(data.get("boardgame-color"));
-            console.log(data.get("color-of-cards"));
-            console.log(data.get("font-color"));
-            console.log(data.get("fonts"));
-        }
-    }
-    let cards = [
-        {
-            back: "orange",
-            text: "A"
-        },
-        {
-            back: "orange",
-            text: "B"
-        },
-        {
-            back: "orange",
-            text: "C"
-        },
-        {
-            back: "orange",
-            text: "D"
-        },
-        {
-            back: "orange",
-            text: "E"
-        },
-        {
-            back: "orange",
-            text: "F"
-        },
-        {
-            back: "orange",
-            text: "G"
-        },
-        {
-            back: "orange",
-            text: "H"
-        },
-        {
-            back: "orange",
-            text: "I"
-        },
-        {
-            back: "orange",
-            text: "J"
-        },
-        {
-            back: "orange",
-            text: "K"
-        },
-        {
-            back: "orange",
-            text: "L"
-        },
-        {
-            back: "orange",
-            text: "M"
-        },
-        {
-            back: "orange",
-            text: "N"
-        },
-        {
-            back: "orange",
-            text: "O"
-        },
-        {
-            back: "orange",
-            text: "P"
-        },
-        {
-            back: "orange",
-            text: "Q"
-        },
-        {
-            back: "orange",
-            text: "R"
-        },
-        {
-            back: "orange",
-            text: "S"
-        },
-        {
-            back: "orange",
-            text: "T"
-        },
-        {
-            back: "orange",
-            text: "U"
-        },
-        {
-            back: "orange",
-            text: "V"
-        },
-        {
-            back: "orange",
-            text: "W"
-        },
-        {
-            back: "orange",
-            text: "X"
-        },
-        {
-            back: "orange",
-            text: "Y"
-        }
-    ];
-    let cardsTemp = [];
+    let cards = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
     let cardsOnField = [];
     let flipped = [];
+    let data;
+    let pairs;
+    let sizeOfCards;
+    let boardgameColorValue;
+    let colorOfCardsValue;
+    let fontColorValue;
+    let fontValue;
     function createGame() {
         let form = document.querySelector("form");
         form.style.visibility = "hidden";
-        //const start: new ; 
+        //const start: new Date() ; 
         //const time1: start.getMinutes();
         let memoryboard = document.createElement("div");
         memoryboard.id = "memoryboard";
         document.querySelector("body").appendChild(memoryboard);
-        let data = new FormData(document.forms[0]);
-        let pairs = 0;
-        let sizeOfCards;
-        let boardgameColorValue;
-        let colorOfCardsValue;
-        let fontColorValue;
-        let fontValue;
-        for (let entry of data) {
-            console.log(entry);
-            console.log(data.get("stepper"));
-            pairs = data.get("stepper");
-            console.log(data.get("slider"));
-            sizeOfCards = data.get("slider");
-            console.log(data.get("boardgame-color"));
-            boardgameColorValue = data.get("boardgame-color");
-            // boardgameColorValue.toString();
-            console.log(data.get("color-of-cards"));
-            colorOfCardsValue = data.get("color-of-cards");
-            // colorOfCardsValue.toString();
-            console.log(data.get("font-color"));
-            fontColorValue = data.get("font-color");
-            //fontColorValue.toString();
-            console.log(data.get("fonts"));
-            fontValue = data.get("fonts");
-            //fontValue.toString();
+        data = new FormData(document.forms[0]); // weist der Variablen formData alle fieldsets zu
+        console.log(data);
+        sizeOfCards = Number(data.get("slider"));
+        boardgameColorValue = data.get("boardgame-color");
+        colorOfCardsValue = data.get("color-of-cards");
+        fontColorValue = data.get("font-color");
+        fontValue = data.get("fonts");
+        let totalPairs = data.get("stepper");
+        if (totalPairs) {
+            pairs = Number(totalPairs);
         }
-        for (let i = 0; i < pairs * 2; i++) {
-            cardsTemp.push(cards[i]);
+        for (let i = 0; i < pairs; i++) {
+            createCard(cards[i]);
+            createCard(cards[i]);
         }
-        for (let n = 0; n < cardsTemp.length; n++) {
-            let partner1 = cards[n];
-            let partner2 = cards[n];
-            cardsOnField.push(partner1, partner2);
-            cardsTemp.splice(partner1, 1);
-        }
+        //shuffle cards
         for (let i = cardsOnField.length - 1; i > 0; i--) {
             let randomNumber = Math.floor(Math.random() * (i + 1)); // randomNUmber sucht uns einen random Wert aus unserem Array
             let temporary = cardsOnField[i]; // und temporay hat die Funktion die die Stellen zu swappen
             cardsOnField[i] = cardsOnField[randomNumber];
             cardsOnField[randomNumber] = temporary;
         }
-        for (let m = 0; m < cardsOnField.length; m++) {
-            createCard(cardsOnField[m], sizeOfCards, boardgameColorValue, colorOfCardsValue, fontColorValue, fontValue);
+        for (let i = 0; i < cardsOnField.length; i++) {
+            memoryboard.appendChild(cardsOnField[i]);
         }
     }
-    function createCard(card, _sizeValue, _colorOfBoardgame, _colorOfCards, _colorOfFont, _fontValue) {
+    function createCard(_cards) {
         let board = document.getElementById("memoryboard");
-        board.style.backgroundColor = _colorOfBoardgame;
+        if (boardgameColorValue) {
+            board.style.backgroundColor = boardgameColorValue.toString();
+        }
         let aCard = document.createElement("div");
-        aCard.style.backgroundColor = "#ffffff";
-        aCard.style.height = _sizeValue;
-        aCard.style.width = _sizeValue;
-        let textOfCard = document.createElement("label");
-        textOfCard.innerHTML = card.text;
-        textOfCard.style.color = _colorOfFont;
-        textOfCard.style.fontFamily = _fontValue;
-        let backOfCard = document.createElement("div");
-        backOfCard.style.backgroundColor = _colorOfCards;
-        backOfCard.style.height = _sizeValue;
-        backOfCard.style.width = _sizeValue;
-        board.appendChild(aCard);
-        aCard.appendChild(textOfCard);
-        aCard.appendChild(backOfCard);
+        aCard.classList.add("cardDiv");
+        aCard.classList.add("isHidden");
         aCard.addEventListener("click", flipCard);
         //aCard.addEventListener("touch", flipCard);
+        if (colorOfCardsValue) {
+            aCard.style.backgroundColor = colorOfCardsValue.toString();
+        }
+        aCard.style.height = sizeOfCards + "px";
+        aCard.style.width = sizeOfCards + "px";
+        aCard.style.borderRadius = "6px";
+        aCard.innerHTML = "<p>" + _cards + "<p>";
+        if (fontValue) {
+            aCard.style.fontFamily = fontValue.toString();
+        }
+        if (fontColorValue) {
+            aCard.style.color = fontColorValue.toString();
+        }
+        cardsOnField.push(aCard);
     }
     function flipCard(_event) {
-        let clickedCard = _event.target;
-        clickedCard.style.visibility = "hidden";
-        flipped.push(clickedCard);
-        if (flipped.length == 2) {
-            checkForMatch(flipped[0], flipped[1]);
+        let target = _event.target;
+        console.log(_event.target);
+        if (target.classList.contains("cardDiv")) {
+            console.log();
+            if (target.classList.contains("isHidden") && !(flipped.length > 2) && target != flipped[0]) {
+                target.classList.remove("isHidden");
+                target.classList.add("open");
+            }
+            flipped.push(target);
         }
-        else {
-            return;
+        console.log(flipped.length);
+        if (flipped.length == 2) {
+            setTimeout(checkForMatch, 2000);
         }
     }
-    function checkForMatch(_firstCard, _secondCard) {
-        //block user interaction 
-        if (_firstCard.text === _secondCard.text) {
-            setTimeout(function () {
-                _firstCard.style.visibility = "hidden";
-                _secondCard.style.visibility = "hidden";
-                cardsOnField.splice(_firstCard, 1);
-                cardsOnField.splice(_secondCard, 1);
-            }, 2000);
+    function checkForMatch() {
+        if (flipped[0].innerHTML === flipped[1].innerHTML) {
+            flipped[0].style.visibility = "hidden";
+            flipped[1].style.visibility = "hidden";
+            cardsOnField.splice(0, 2);
         }
         else {
-            setTimeout(function () {
-                _firstCard.style.back.visibility = "visible";
-                _secondCard.style.back.visibility = "visible";
-            }, 2000);
+            flipped[0].classList.contains("open");
+            flipped[0].classList.add("isHidden");
+            flipped[1].classList.contains("open");
+            flipped[1].classList.add("isHidden");
+        }
+        flipped = [];
+        if (cardsOnField.length == 0) {
+            alert("COOOOOONGRAAAAATS");
         }
     }
 })(L_03_MemorySettings || (L_03_MemorySettings = {}));
-/**
+/*
 function FlipCard (_event: Event): void {
     let target: HTMLElement = <HTMLElement>_event.target;
     if (target.classList.contains("card")) {
