@@ -15,13 +15,15 @@ let pattern: CanvasRenderingContext2D = document.createElement("canvas").getCont
 pattern.fillStyle = "#87898c";
 pattern.fillRect(0, 0, innerWidth, innerHeight);
 pattern.moveTo(0, 10);
-pattern.lineTo(10, 10);
-pattern.lineTo(20, 0);
-pattern.lineTo(30, 0);
-pattern.lineTo(40, 10);
-pattern.lineTo(30, 20);
-pattern.lineTo(20, 20);
-pattern.lineTo(10, 10);
+pattern.lineTo(10, 20); 
+pattern.lineTo(20, 30);
+pattern.lineTo(30, 40);
+pattern.lineTo(40, 50);
+pattern.lineTo(50, 60);
+pattern.lineTo(60, 70);
+pattern.lineTo(70, 80);
+pattern.lineTo(80, 90);
+pattern.strokeStyle = "#ff0000"; 
 pattern.stroke();
 
 c.fillStyle = c.createPattern(pattern.canvas, "repeat")!;
@@ -39,7 +41,7 @@ for ( let i: number = 0; i < 200; i++) { 
     let x: number = Math.random() * innerWidth;
     c.beginPath();
     c.arc( x, y, radius, 0, Math.PI * 2, false); 
-    c.fillStyle = "#ffffff"; 
+    c.fillStyle = "#000000"; 
     c.strokeStyle = "#000000";
     c.fill();
     c.stroke(); 
@@ -49,9 +51,9 @@ for ( let i: number = 0; i < 200; i++) { 
 function animate(): void { 
     requestAnimationFrame(animate); 
     
-    c.clearRect( 0, 0, innerWidth, innerHeight); 
+    //c.clearRect( 0, 0, innerWidth, innerHeight); 
     c.beginPath();
-    c.arc( x, y, radius, 0, Math.PI * 2, false); 
+    c.arc( 200, 200, radius, 0, Math.PI * 2, false); 
     c.strokeStyle = "#ffffff";
     c.fillStyle = "#ffffff"; 
     c.stroke(); 
@@ -70,4 +72,5 @@ function animate(): void { 
 
 animate(); 
 **/
+
 }
