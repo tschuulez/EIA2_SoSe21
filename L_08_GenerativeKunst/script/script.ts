@@ -1,5 +1,6 @@
 namespace generativeArt {
 
+function draw(): void {
 let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
 let c: CanvasRenderingContext2D = canvas.getContext("2d")!;
 canvas.width = window.innerWidth;
@@ -46,12 +47,14 @@ for ( let i: number = 0; i < 200; i++) { 
     c.fill();
     c.stroke(); 
 }
+}
 
-/** 
+draw();
+/** bewegender Circle, dachte das sei aber zu wenig für diese Abgabe 
 function animate(): void { 
     requestAnimationFrame(animate); 
     
-    //c.clearRect( 0, 0, innerWidth, innerHeight); 
+    c.clearRect( 0, 0, innerWidth, innerHeight); 
     c.beginPath();
     c.arc( 200, 200, radius, 0, Math.PI * 2, false); 
     c.strokeStyle = "#ffffff";
