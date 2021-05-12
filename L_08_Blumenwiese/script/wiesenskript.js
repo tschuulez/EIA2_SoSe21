@@ -4,6 +4,9 @@ var Blumenwiese;
     window.addEventListener("load", handleLoad);
     let crc2;
     let golden = 0.5;
+    let canvas = document.querySelector("canvas");
+    canvas.width = 360;
+    canvas.height = 700;
     function handleLoad() {
         console.log("READY");
         let canvas = document.querySelector("canvas");
@@ -19,13 +22,14 @@ var Blumenwiese;
         drawCloud({ x: 50, y: 160 }, { x: 100, y: 25 });
         drawCloud({ x: 250, y: 150 }, { x: 100, y: 25 });
         drawSun({ x: 50, y: 50 });
-        drawOneFlower({ x: 57, y: 490 });
+        drawFlowers();
     }
     function drawBackground() {
         console.log("Background");
         let gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
         gradient.addColorStop(0, "#467deb");
-        gradient.addColorStop(golden, "white");
+        gradient.addColorStop(0.4, "lightblue");
+        gradient.addColorStop(0.5, "lightgreen");
         gradient.addColorStop(1, "HSL(100, 100%, 28%)");
         crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
@@ -90,27 +94,40 @@ var Blumenwiese;
         crc2.fill();
         crc2.restore();
     }
-    function drawOneFlower(_position) {
+    //inspired by Gina 
+    function drawDaisy() {
         console.log("FLOWERS");
+        let x = (Math.random() * canvas.width - 10);
+        let y = (Math.random() * (canvas.height - canvas.height * 0.5) + canvas.height * 0.5);
+        crc2.save();
         crc2.beginPath();
-        crc2.arc(50, 500, 4, 0, Math.PI * 2, false);
-        crc2.fillStyle = "#ECEF10";
-        crc2.strokeStyle = "#ECEF10";
-        crc2.translate(_position.x, _position.y);
+        crc2.moveTo(x, y);
+        crc2.translate(x, y);
+        crc2.quadraticCurveTo(10, 5, 10, 30);
+        crc2.strokeStyle = "#358443";
+        crc2.stroke();
+        crc2.beginPath();
+        moveTo(10, 20);
+        crc2.arc(0, 0, 6, 0, 2 * Math.PI);
+        crc2.fillStyle = "#CED54A";
+        crc2.strokeStyle = "#CED54A";
         crc2.fill();
         crc2.stroke();
-        for (let blossoms = 0; blossoms < 5; blossoms++) {
-            crc2.save();
+        for (let blossoms = 80; blossoms > 8; blossoms -= 8) {
             crc2.beginPath();
-            crc2.ellipse(0, 0, 5, 7, Math.PI / 4, 0, 2 * Math.PI);
-            crc2.fillStyle = "#E18912";
-            crc2.strokeStyle = "#E18912";
-            crc2.stroke();
-            let x = (Math.random() * 10);
-            let y = -(Math.random() * 10);
-            crc2.translate(x, y);
+            moveTo(10, 20);
+            crc2.rotate(45 * Math.PI / 20);
+            crc2.arc(10, 0, 5, 0, 2 * Math.PI);
+            crc2.fillStyle = "#ffffff";
+            crc2.strokeStyle = "#ffffff";
             crc2.fill();
-            crc2.restore();
+            crc2.stroke();
+        }
+        crc2.restore();
+    }
+    function drawFlowers() {
+        for (let i = 0; i < 10; i++) {
+            drawDaisy();
         }
     }
 })(Blumenwiese || (Blumenwiese = {}));
