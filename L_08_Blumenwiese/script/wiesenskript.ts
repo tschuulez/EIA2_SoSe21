@@ -18,16 +18,16 @@ namespace Blumenwiese {
         crc2 = canvas.getContext("2d")!;
 
         let horizon: number = crc2.canvas.height * golden;
+        let mountainsPosition: Vector = { x: 0, y: horizon };
 
         drawBackground();
-        drawMountains();
+        drawMountains(mountainsPosition, 75, 200, "grey", "white");
+        drawMountains(mountainsPosition, 50, 150, "grey", "lightgrey");
         drawCloud({ x: 200, y: 50 }, { x: 100, y: 25 });
         drawCloud({ x: 50, y: 160 }, { x: 100, y: 25 });
         drawCloud({ x: 250, y: 150 }, { x: 100, y: 25 });
         drawSun({ x: 50, y: 50 });
-        drawOneFlower();
-        drawFLowers();
-        drawBees();
+        drawOneFlower({ x: 57, y: 490 });
     }
 
     function drawBackground(): void {
@@ -43,8 +43,38 @@ namespace Blumenwiese {
 
     }
 
-    function drawMountains(): void {
+    function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
         console.log("MOUNTAINS");
+
+        let stepMin: number = 50;
+        let stepMax: number = 30;
+        let x: number = 0;
+
+        crc2.save();
+        crc2.translate(_position.x, _position.y);
+
+        crc2.beginPath();
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, -_max);
+
+        do {
+            x += stepMin + Math.random() * (stepMax - stepMin);
+            let y: number = -_min - Math.random() * (_max - _min);
+
+            crc2.lineTo(x, y);
+        } while (x < crc2.canvas.width);
+
+        crc2.lineTo(x, 0);
+        crc2.closePath();
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, -_max);
+        gradient.addColorStop(0, _colorLow);
+        gradient.addColorStop(0.7, _colorHigh);
+
+        crc2.fillStyle = gradient;
+        crc2.fill();
+
+        crc2.restore();
     }
 
     function drawCloud(_position: Vector, _size: Vector): void {
@@ -90,71 +120,34 @@ namespace Blumenwiese {
         crc2.arc(0, 0, r2, 0, 2 * Math.PI);
         crc2.fill();
         crc2.restore();
-
-
-
-
     }
 
-    function drawOneFlower(): void {
+    function drawOneFlower(_position: Vector): void {
         console.log("FLOWERS");
 
-        let nBranches: number = 50;
-        let maxRadius: number = 3;
-        let branch: Path2D = new Path2D();
-        branch.arc(0, 0, maxRadius, 0, 2 * Math.PI);
+        crc2.beginPath();
+        crc2.arc(50, 500, 4, 0, Math.PI * 2, false);
+        crc2.fillStyle = "#ECEF10";
+        crc2.strokeStyle = "#ECEF10";
+        crc2.translate(_position.x, _position.y);
+        crc2.fill();
+        crc2.stroke();
 
-        crc2.fillStyle = "magenta";
-        crc2.fillRect(0, 0, 20, -200);
-
-        crc2.save();
-        crc2.translate(0, -120);
-
-        do {
-            let y: number = Math.random() * 350;
-            let size: number = 1 - y / 700;
-            let x: number = (Math.random() - 0.5) * 2 * maxRadius;
-
+        for (let blossoms: number = 0; blossoms < 5; blossoms++) {
             crc2.save();
-            crc2.translate(0, -y);
-            crc2.scale(size, size);
-            crc2.translate(x, 0);
 
-            let colorAngle: number = 120 - Math.random() * 60;
-            let color: string = "HSLA(" + colorAngle + ", 50%, 30%, 0.5)";
-
-            crc2.fillStyle = color;
-            crc2.fill(branch);
-
+            crc2.beginPath();
+            crc2.ellipse(0, 0, 5, 7, Math.PI / 4, 0, 2 * Math.PI);
+            crc2.fillStyle = "#E18912";
+            crc2.strokeStyle = "#E18912";
+            
+            crc2.stroke();
+            let x: number = (Math.random() * 10 );
+            let y: number = - (Math.random() * 10 );
+            crc2.translate(x, y);
+            crc2.fill();
             crc2.restore();
-        } while (--nBranches > 0);
-        crc2.restore();
+        }
     }
-
-    function drawFLowers(_nFlowers: number, _posStart: Vector, _posEnd: Vector, _minScale: number, _stepPos: number, _stepScale: number): void {
-        let transform: DOMMatrix = crc2.getTransform();
-        let step: Vector = {
-            x: (_posEnd.x - _posStart.x) * _stepPos,
-            y: (_posEnd.y - _posStart.y) * _stepPos
-        };
-
-        crc2.translate(_posStart.x, _posStart.y);
-        crc2.scale(_minScale, _minScale);
-
-        do {
-            drawOneFlower();
-
-            crc2.translate(step.x, step.y);
-            crc2.scale(_stepScale, _stepScale);
-
-        } while (--_nTrees > 0);
-
-        crc2.setTransform(transform);
-    }
-
-    function drawBees(): void {
-        console.log("BEES");
-    }
-
 
 }
