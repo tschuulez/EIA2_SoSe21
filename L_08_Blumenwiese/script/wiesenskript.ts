@@ -167,11 +167,57 @@ namespace Blumenwiese {
         crc2.restore();
     }
 
+    function drawTulip(): void {
+
+        let x: number = (Math.random() * canvas.width - 10);
+        let y: number = (Math.random() * (canvas.height - canvas.height * 0.5) + canvas.height * 0.5);
+
+        crc2.save();
+
+        crc2.beginPath();
+        crc2.moveTo(x, y);
+        crc2.translate(x, y);
+        crc2.lineTo(0, 30);
+        crc2.strokeStyle = "#358443";
+
+        crc2.stroke();
+
+        crc2.beginPath();
+        moveTo(10, 20);
+        crc2.arc(0, 0, 9, 0, 1 * Math.PI);
+        
+        crc2.fillStyle = "#AD407D";
+        crc2.strokeStyle = "#AD407D";
+        crc2.fill();
+        crc2.stroke();
+        moveTo(0, 20);
+        crc2.lineTo(-10, -10);
+        crc2.lineTo(-3, 2);
+        crc2.lineTo(1, -10);
+        crc2.lineTo(4, 2);
+        crc2.lineTo(9, -10);
+        crc2.lineTo(9, 3);
+        crc2.closePath();
+        crc2.fillStyle = "#AD407D";
+        crc2.fill();
+        crc2.stroke();
+
+        crc2.restore();
+    
+    }
+
     function drawFlowers(): void {
 
         for (let i: number = 0; i < 10; i++) {
             drawDaisy();
+            
         }
+
+        for (let i: number = 0; i < 10; i++) {
+            drawTulip();
+            
+        }
+
     }
 
 }
