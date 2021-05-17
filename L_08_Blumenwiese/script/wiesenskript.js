@@ -5,7 +5,7 @@ var Blumenwiese;
     let crc2;
     let golden = 0.5;
     let canvas = document.querySelector("canvas");
-    canvas.width = 360;
+    canvas.width = 1000;
     canvas.height = 700;
     function handleLoad() {
         console.log("READY");
@@ -23,6 +23,7 @@ var Blumenwiese;
         drawCloud({ x: 250, y: 150 }, { x: 100, y: 25 });
         drawSun({ x: 50, y: 50 });
         drawFlowers();
+        drawTree({ x: -1000, y: 100 });
     }
     function drawBackground() {
         console.log("Background");
@@ -155,11 +156,28 @@ var Blumenwiese;
         crc2.stroke();
         crc2.restore();
     }
+    function drawTree(_position) {
+        crc2.beginPath();
+        crc2.fillStyle = "#7C6645";
+        crc2.fillRect(_position.x + 1090, _position.y + 325, 35, 260);
+        crc2.fillRect(_position.x + 1100, _position.y + 350, 90, 6);
+        crc2.closePath();
+        crc2.beginPath();
+        crc2.fillStyle = "#2E541A";
+        crc2.arc(_position.x + 1110, _position.y + 150, 80, 0, 2 * Math.PI);
+        crc2.arc(_position.x + 1160, _position.y + 230, 85, 0, 2 * Math.PI);
+        crc2.arc(_position.x + 1080, _position.y + 285, 65, 0, 2 * Math.PI);
+        crc2.arc(_position.x + 1045, _position.y + 205, 75, 0, 2 * Math.PI);
+        crc2.arc(_position.x + 1035, _position.y + 205, 85, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.fill();
+        //crc2.stroke();
+    }
     function drawFlowers() {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 30; i++) {
             drawDaisy();
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             drawTulip();
         }
     }
