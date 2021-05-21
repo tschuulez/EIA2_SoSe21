@@ -1,16 +1,16 @@
 "use strict";
 var L09_Bienenwiese;
 (function (L09_Bienenwiese) {
-    let canvas = document.querySelector("canvas");
-    canvas.width = 1000;
-    canvas.height = 700;
+    L09_Bienenwiese.canvas = document.querySelector("canvas");
+    L09_Bienenwiese.canvas.width = 1000;
+    L09_Bienenwiese.canvas.height = 700;
     let bees = [];
     window.addEventListener("load", handleLoad);
     function handleLoad() {
         console.log("READY");
-        if (!canvas)
+        if (!L09_Bienenwiese.canvas)
             return;
-        L09_Bienenwiese.crc2 = canvas.getContext("2d");
+        L09_Bienenwiese.crc2 = L09_Bienenwiese.canvas.getContext("2d");
         drawBackground();
         L09_Bienenwiese.createPaths();
         createBees(10);
@@ -50,7 +50,7 @@ var L09_Bienenwiese;
         // handleCollisions();
     }
     function drawMountains(_position, _min, _max, _colorLow, _colorHigh) {
-        console.log("MOUNTAINS");
+        //console.log("MOUNTAINS");
         let stepMin = 50;
         let stepMax = 30;
         let x = 0;
@@ -102,7 +102,7 @@ var L09_Bienenwiese;
     }
     **/
     function drawSun(_position) {
-        console.log("SUN");
+        //console.log("SUN");
         let r1 = 30;
         let r2 = 150;
         let gradient = L09_Bienenwiese.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -117,9 +117,9 @@ var L09_Bienenwiese;
     }
     //inspired by Gina 
     function drawDaisy() {
-        console.log("FLOWERS");
-        let x = (Math.random() * canvas.width - 10);
-        let y = (Math.random() * (canvas.height - canvas.height * 0.5) + canvas.height * 0.5);
+        //console.log("FLOWERS");
+        let x = (Math.random() * L09_Bienenwiese.canvas.width - 10);
+        let y = (Math.random() * (L09_Bienenwiese.canvas.height - L09_Bienenwiese.canvas.height * 0.5) + L09_Bienenwiese.canvas.height * 0.5);
         L09_Bienenwiese.crc2.save();
         L09_Bienenwiese.crc2.beginPath();
         L09_Bienenwiese.crc2.moveTo(x, y);
@@ -147,8 +147,8 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2.restore();
     }
     function drawTulip() {
-        let x = (Math.random() * canvas.width - 10);
-        let y = (Math.random() * (canvas.height - canvas.height * 0.5) + canvas.height * 0.5);
+        let x = (Math.random() * L09_Bienenwiese.canvas.width - 10);
+        let y = (Math.random() * (L09_Bienenwiese.canvas.height - L09_Bienenwiese.canvas.height * 0.5) + L09_Bienenwiese.canvas.height * 0.5);
         L09_Bienenwiese.crc2.save();
         L09_Bienenwiese.crc2.beginPath();
         L09_Bienenwiese.crc2.moveTo(x, y);

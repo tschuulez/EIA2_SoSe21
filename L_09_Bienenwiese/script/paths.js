@@ -1,7 +1,8 @@
 "use strict";
 var L09_Bienenwiese;
 (function (L09_Bienenwiese) {
-    L09_Bienenwiese.shapesClouds = [
+    /**
+    export let shapesBees: number[][][] = [
         [
             [30, 1], [50, 15], [71, 1], [88, 31], [67, 40], [84, 63], [59, 93], [30, 79], [19, 87], [2, 63], [15, 43], [8, 20]
         ],
@@ -15,16 +16,50 @@ var L09_Bienenwiese;
             [37, 3], [70, 14], [62, 34], [83, 31], [78, 76], [55, 96], [20, 84], [7, 67], [5, 27], [20, 15], [39, 39]
         ]
     ];
+    **/
     function createPaths() {
         L09_Bienenwiese.beePath = createBeePaths();
-        L09_Bienenwiese.cloudPath = createCloudPath(L09_Bienenwiese.shapesClouds);
+        L09_Bienenwiese.cloudPath = createCloudPath();
     }
     L09_Bienenwiese.createPaths = createPaths;
     function createBeePaths() {
+        console.log("beeeeeee");
         let paths = [];
         let path = new Path2D();
-        // console.group(type);
-        // console.log(coordinates);
+        let x = (Math.random() * L09_Bienenwiese.canvas.width - 10);
+        let y = (Math.random() * (L09_Bienenwiese.canvas.height));
+        L09_Bienenwiese.crc2.save();
+        L09_Bienenwiese.crc2.beginPath();
+        L09_Bienenwiese.crc2.moveTo(x, y);
+        L09_Bienenwiese.crc2.translate(x, y);
+        L09_Bienenwiese.crc2.quadraticCurveTo(16, -10, 16, 10);
+        L09_Bienenwiese.crc2.quadraticCurveTo(16, 16, 2, 13);
+        L09_Bienenwiese.crc2.quadraticCurveTo(-8, -1, 2, 0);
+        L09_Bienenwiese.crc2.strokeStyle = "#000000";
+        L09_Bienenwiese.crc2.lineWidth = 2;
+        L09_Bienenwiese.crc2.fillStyle = "yellow";
+        L09_Bienenwiese.crc2.fill();
+        L09_Bienenwiese.crc2.lineTo(0, 8);
+        L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.moveTo(10, -3);
+        L09_Bienenwiese.crc2.quadraticCurveTo(-1, 14, 13, 13);
+        L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.closePath();
+        L09_Bienenwiese.crc2.beginPath();
+        moveTo(-13, 5);
+        L09_Bienenwiese.crc2.arc(6, -8, 6, 0, 2 * Math.PI);
+        L09_Bienenwiese.crc2.fillStyle = "lightblue";
+        L09_Bienenwiese.crc2.strokeStyle = "#000000";
+        L09_Bienenwiese.crc2.fill();
+        L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.beginPath();
+        moveTo(-13, 5);
+        L09_Bienenwiese.crc2.arc(12, -8, 6, 0, 2 * Math.PI);
+        L09_Bienenwiese.crc2.fillStyle = "lightblue";
+        L09_Bienenwiese.crc2.strokeStyle = "#000000";
+        L09_Bienenwiese.crc2.fill();
+        L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.closePath();
         // console.groupEnd();
         path.closePath();
         paths.push(path);

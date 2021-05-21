@@ -27,7 +27,7 @@ var L09_Bienenwiese;
                 this.position.y -= L09_Bienenwiese.crc2.canvas.height;
         }
         draw() {
-            // console.log("Asteroid draw");
+            console.log("bee draw");
             L09_Bienenwiese.crc2.save();
             L09_Bienenwiese.crc2.translate(this.position.x, this.position.y);
             L09_Bienenwiese.crc2.scale(this.size, this.size);

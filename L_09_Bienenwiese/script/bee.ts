@@ -36,7 +36,7 @@ namespace L09_Bienenwiese {
         }
 
         draw(): void {
-            // console.log("Asteroid draw");
+            console.log("bee draw");
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
             crc2.scale(this.size, this.size);

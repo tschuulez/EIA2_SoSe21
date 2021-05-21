@@ -7,7 +7,7 @@ namespace L09_Bienenwiese {
     }
     export let crc2: CanvasRenderingContext2D;
 
-    let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
+    export let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
     canvas.width = 1000;
     canvas.height = 700;
 
@@ -81,7 +81,7 @@ namespace L09_Bienenwiese {
     }
 
     function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
-        console.log("MOUNTAINS");
+        //console.log("MOUNTAINS");
 
         let stepMin: number = 50;
         let stepMax: number = 30;
@@ -143,7 +143,7 @@ namespace L09_Bienenwiese {
     **/
 
     function drawSun(_position: Vector): void {
-        console.log("SUN");
+        //console.log("SUN");
 
         let r1: number = 30;
         let r2: number = 150;
@@ -161,7 +161,7 @@ namespace L09_Bienenwiese {
     }
     //inspired by Gina 
     function drawDaisy(): void {
-        console.log("FLOWERS");
+        //console.log("FLOWERS");
 
         let x: number = (Math.random() * canvas.width - 10);
         let y: number = (Math.random() * (canvas.height - canvas.height * 0.5) + canvas.height * 0.5);

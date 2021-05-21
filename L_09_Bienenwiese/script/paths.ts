@@ -1,8 +1,8 @@
 namespace L09_Bienenwiese {
     export let beePath: Path2D;
     export let cloudPath: Path2D;
-
-    export let shapesClouds: number[][][] = [
+    /** 
+    export let shapesBees: number[][][] = [
         [
             [30, 1], [50, 15], [71, 1], [88, 31], [67, 40], [84, 63], [59, 93], [30, 79], [19, 87], [2, 63], [15, 43], [8, 20]
         ],
@@ -16,20 +16,57 @@ namespace L09_Bienenwiese {
             [37, 3], [70, 14], [62, 34], [83, 31], [78, 76], [55, 96], [20, 84], [7, 67], [5, 27], [20, 15], [39, 39]
         ]
     ];
+    **/
 
     export function createPaths(): void {
         beePath = createBeePaths();
-        cloudPath = createCloudPath(shapesClouds);
+        cloudPath = createCloudPath();
     }
 
     function createBeePaths(): Path2D {
+        console.log("beeeeeee");
         let paths: Path2D[] = [];
 
         let path: Path2D = new Path2D();
+        
+        let x: number = (Math.random() * canvas.width - 10);
+        let y: number = (Math.random() * (canvas.height));
 
-        // console.group(type);
+        crc2.save();
 
-        // console.log(coordinates);
+        crc2.beginPath();
+        crc2.moveTo(x, y);
+        crc2.translate(x, y);
+        crc2.quadraticCurveTo(16, -10, 16, 10);
+        crc2.quadraticCurveTo(16, 16, 2, 13);
+        crc2.quadraticCurveTo(-8, -1, 2 , 0 );
+        crc2.strokeStyle = "#000000";
+        crc2.lineWidth = 2;
+        crc2.fillStyle = "yellow";
+        crc2.fill();
+        crc2.lineTo(0, 8);
+        crc2.stroke();
+        crc2.moveTo(10, -3);
+        crc2.quadraticCurveTo(-1, 14, 13, 13);
+        
+        crc2.stroke();
+        crc2.closePath();
+
+        crc2.beginPath();
+        moveTo(-13, 5);
+        crc2.arc(6, -8, 6, 0, 2 * Math.PI);
+        crc2.fillStyle = "lightblue";
+        crc2.strokeStyle = "#000000";
+        crc2.fill();
+        crc2.stroke();
+        crc2.beginPath();
+        moveTo(-13, 5);
+        crc2.arc(12, -8, 6, 0, 2 * Math.PI);
+        crc2.fillStyle = "lightblue";
+        crc2.strokeStyle = "#000000";
+        crc2.fill();
+        crc2.stroke();
+        crc2.closePath();
 
 
         // console.groupEnd();
