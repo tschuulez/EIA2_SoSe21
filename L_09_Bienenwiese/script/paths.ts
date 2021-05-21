@@ -1,6 +1,6 @@
 namespace L09_Bienenwiese {
     export let beePath: Path2D;
-    export let cloudPath: Path2D;
+    //export let cloudPath: Path2D;
     /** 
     export let shapesBees: number[][][] = [
         [
@@ -25,8 +25,7 @@ namespace L09_Bienenwiese {
 
     function createBeePaths(): Path2D {
         console.log("beeeeeee");
-        let paths: Path2D[] = [];
-
+        
         let path: Path2D = new Path2D();
         
         let x: number = (Math.random() * canvas.width - 10);
@@ -67,16 +66,12 @@ namespace L09_Bienenwiese {
         crc2.fill();
         crc2.stroke();
         crc2.closePath();
-
-
-        // console.groupEnd();
-        path.closePath();
-        paths.push(path);
-
+        crc2.restore();
+        
         return path;
     }
-
-    function createCloudPath(_shapes: number[][][]): Path2D {
+    
+    function createCloudPath(): Path2D {
         console.log("CLOUD");
 
         let particle: Path2D = new Path2D();
@@ -117,4 +112,6 @@ namespace L09_Bienenwiese {
             return particle;
 
         }
+        
     }
+}

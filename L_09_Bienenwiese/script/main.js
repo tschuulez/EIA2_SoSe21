@@ -13,7 +13,8 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2 = L09_Bienenwiese.canvas.getContext("2d");
         drawBackground();
         L09_Bienenwiese.createPaths();
-        createBees(10);
+        createBees(1);
+        console.log(bees.length);
         window.setInterval(update, 20);
     }
     function drawBackground() {

@@ -1,6 +1,7 @@
 "use strict";
 var L09_Bienenwiese;
 (function (L09_Bienenwiese) {
+    //export let cloudPath: Path2D;
     /**
     export let shapesBees: number[][][] = [
         [
@@ -19,12 +20,11 @@ var L09_Bienenwiese;
     **/
     function createPaths() {
         L09_Bienenwiese.beePath = createBeePaths();
-        L09_Bienenwiese.cloudPath = createCloudPath();
+        cloudPath = createCloudPath();
     }
     L09_Bienenwiese.createPaths = createPaths;
     function createBeePaths() {
         console.log("beeeeeee");
-        let paths = [];
         let path = new Path2D();
         let x = (Math.random() * L09_Bienenwiese.canvas.width - 10);
         let y = (Math.random() * (L09_Bienenwiese.canvas.height));
@@ -60,12 +60,10 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2.fill();
         L09_Bienenwiese.crc2.stroke();
         L09_Bienenwiese.crc2.closePath();
-        // console.groupEnd();
-        path.closePath();
-        paths.push(path);
+        L09_Bienenwiese.crc2.restore();
         return path;
     }
-    function createCloudPath(_shapes) {
+    function createCloudPath() {
         console.log("CLOUD");
         let particle = new Path2D();
         for (let type of _shapes) {

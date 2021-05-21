@@ -29,7 +29,9 @@ namespace L09_Bienenwiese {
         drawBackground();
         createPaths();
 
-        createBees(10);
+        createBees(1);
+
+        console.log(bees.length);
 
         window.setInterval(update, 20);
     }
