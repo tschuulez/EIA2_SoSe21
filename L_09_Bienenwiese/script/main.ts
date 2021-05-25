@@ -27,6 +27,7 @@ namespace L09_Bienenwiese {
         
 
         drawBackground();
+
         createPaths();
 
         createBees(1);
@@ -71,7 +72,7 @@ namespace L09_Bienenwiese {
 
     function update(): void {
         console.log("Update");
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
         for (let bee of bees) {
             bee.fly(1 / 50);
@@ -185,6 +186,7 @@ namespace L09_Bienenwiese {
         crc2.strokeStyle = "#CED54A";
         crc2.fill();
         crc2.stroke();
+        crc2.closePath();
 
         for (let blossoms: number = 80; blossoms > 8; blossoms -= 8) {
 
@@ -236,6 +238,7 @@ namespace L09_Bienenwiese {
         crc2.fillStyle = "#AD407D";
         crc2.fill();
         crc2.stroke();
+        crc2.closePath();
 
         crc2.restore();
 
@@ -264,8 +267,9 @@ namespace L09_Bienenwiese {
 
 
 
-        crc2.closePath();
+        
         crc2.fill();
+        crc2.closePath();
         //crc2.stroke();
     }
 

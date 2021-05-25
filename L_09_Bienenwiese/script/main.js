@@ -42,7 +42,7 @@ var L09_Bienenwiese;
     }
     function update() {
         console.log("Update");
-        L09_Bienenwiese.crc2.fillRect(0, 0, L09_Bienenwiese.crc2.canvas.width, L09_Bienenwiese.crc2.canvas.height);
+        //crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         for (let bee of bees) {
             bee.fly(1 / 50);
             bee.draw();
@@ -135,6 +135,7 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2.strokeStyle = "#CED54A";
         L09_Bienenwiese.crc2.fill();
         L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.closePath();
         for (let blossoms = 80; blossoms > 8; blossoms -= 8) {
             L09_Bienenwiese.crc2.beginPath();
             moveTo(10, 20);
@@ -175,6 +176,7 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2.fillStyle = "#AD407D";
         L09_Bienenwiese.crc2.fill();
         L09_Bienenwiese.crc2.stroke();
+        L09_Bienenwiese.crc2.closePath();
         L09_Bienenwiese.crc2.restore();
     }
     function drawTree(_position) {
@@ -190,8 +192,8 @@ var L09_Bienenwiese;
         L09_Bienenwiese.crc2.arc(_position.x + 1080, _position.y + 285, 65, 0, 2 * Math.PI);
         L09_Bienenwiese.crc2.arc(_position.x + 1045, _position.y + 205, 75, 0, 2 * Math.PI);
         L09_Bienenwiese.crc2.arc(_position.x + 1035, _position.y + 205, 85, 0, 2 * Math.PI);
-        L09_Bienenwiese.crc2.closePath();
         L09_Bienenwiese.crc2.fill();
+        L09_Bienenwiese.crc2.closePath();
         //crc2.stroke();
     }
     function drawFlowers() {
